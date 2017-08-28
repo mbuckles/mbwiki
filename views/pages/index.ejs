@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+<body>
+  <div class= "container-fluid center-block">
+  <div class = "text-center main">
+    <h1>Wikipedia Search API</h1>
+    <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" ><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSs2YWoYGTJFYJk2xwMV2J2-beVeKDdgDCA0SnCjVLAJABZvcse"></a>
+    <h5>Click "W" to do a random search.</h5>
+  </div>
+
+  <div class = "submit center-block">
+    <input class= "form-control" id="input">
+    <button id="submit" type="button" class = "btn btn-primary">Submit</button>
+    <h4 class="text-center">All search results and information provided by Wikipedia.</h4>
+  </div>
+
+  <div class=" center-block" id="output">
+    <div class="pull-left" id="results"></div>
+  </div>
+  </div>
+
+ <footer>
+   <% include ../partials/footer.ejs %>
+   <script>
+   $(document).ready(function() {
+
+     $("#submit").click(function() {
+       var input = $("#input").val();
+       var wiki = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + input + "&format=json&callback=?";
+
+       $.ajax({
+         type: "GET",
+         url: wiki,
+         contentType: "application/json; charset=8",
+         async: false,
+         dataType: "json",
+         success: function(data, textStatus, jqXHR) {
+
+           $("#output").html(" ");
+           for (var i = 0; i < data[1].length; i++) {
+             $("#output").prepend("<div><div class = 'btn-primary'><a href= " + data[3][i] + "><h2>" + data[1][i] + "<h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
+           }
+           $("#input").val("");
+         },
+         error: function(errorMessage) {}
+       });
+     });
+     //allow enter to act as submit
+     $("#input").keypress(function(enter) {
+       if (enter.which == 13) {
+         $("#submit").click();
+       }
+     });
+
+   });
+   </script>
+ </footer>
+</html>
+</body>
