@@ -13,7 +13,7 @@
 
   <div class = "submit center-block">
     <input class= "form-control" id="input" placeholder="Wiki Search">
-    <button id="submit" type="button" class = "btn btn-primary">Submit</button>
+    <button id="submit" type="button" class = "btn btn-success">Submit</button>
     <h4 class="text-center">All search results and information provided by Wikipedia.</h4>
   </div>
 
@@ -41,7 +41,7 @@
 
            $("#output").html(" ");
            for (var i = 0; i < data[1].length; i++) {
-             $("#output").prepend("<div><div class = 'btn-primary'><a href= " + data[3][i] + "><h2>" + data[1][i] + "<h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
+             $("#output").prepend("<div><div class = 'btn-default'><a href= " + data[3][i] + "><h2>" + data[1][i] + "<h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
            }
            $("#input").val("");
          },
