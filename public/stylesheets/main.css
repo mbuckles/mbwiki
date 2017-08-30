@@ -39,9 +39,13 @@ h4{
   padding:15px;
 }
 a {
-  color:white;
+  color:black;
   font-size:20px;
   border-radius:25px;
+}
+a:focus, a:hover {
+    color: #23527c;
+    text-decoration: underline;
 }
 .main{
   width:30%;
@@ -51,6 +55,16 @@ a {
   border-thickness:2px;
   border-radius:25px;
   display: inline-block;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    padding-left: 13px;
+    border: 1px solid black;
+    margin: 13px;
+    border-radius: 11px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 button {
   margin:1%;
